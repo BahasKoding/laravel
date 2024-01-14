@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardRoomController;
+use App\Http\Controllers\DashboardStaffController;
+use App\Http\Controllers\DashboardCustomerController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -37,3 +39,23 @@ Route::prefix('/dashboard/room')->middleware('auth')->group(function(){
     Route::post('/update/{room}',[DashboardRoomController::class,'update']);
     Route::get('/destroy/{room}',[DashboardRoomController::class,'destroy']);
 });
+
+Route::prefix('/dashboard/staff')->middleware('auth')->group(function(){
+    Route::get('/index',[DashboardStaffController::class,'index']);
+    Route::get('/create',[DashboardStaffController::class,'create']);
+    Route::post('/store',[DashboardStaffController::class,'store']);
+    Route::get('/edit/{staff}',[DashboardStaffController::class,'edit']);
+    Route::post('/update/{staff}',[DashboardStaffController::class,'update']);
+    Route::get('/destroy/{staff}',[DashboardStaffController::class,'destroy']);
+});
+
+
+Route::prefix('/dashboard/customer')->middleware('auth')->group(function(){
+    Route::get('/index',[DashboardCustomerController::class,'index']);
+    Route::get('/create',[DashboardCustomerController::class,'create']);
+    Route::post('/store',[DashboardCustomerController::class,'store']);
+    Route::get('/edit/{customer}',[DashboardCustomerController::class,'edit']);
+    Route::post('/update/{customer}',[DashboardCustomerController::class,'update']);
+    Route::get('/destroy/{customer}',[DashboardCustomerController::class,'destroy']);
+});
+
