@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardMahasiswaController;
+use App\Http\Controllers\DashboardRoomController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -28,4 +28,12 @@ Route::get('/register',[RegisterController::class,'index'])->middleware('guest')
 Route::post('/register',[RegisterController::class,'store']);
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
-Route::resource('/dashboard/mahasiswa', DashboardMahasiswaController::class)->middleware('auth');
+
+Route::prefix('/dashboard/room')->middleware('auth')->group(function(){
+    Route::get('/index',[DashboardRoomController::class,'index']);
+    Route::get('/create',[DashboardRoomController::class,'create']);
+    Route::post('/store',[DashboardRoomController::class,'store']);
+    Route::get('/edit/{room}',[DashboardRoomController::class,'edit']);
+    Route::post('/update/{room}',[DashboardRoomController::class,'update']);
+    Route::get('/destroy/{room}',[DashboardRoomController::class,'destroy']);
+});
