@@ -13,6 +13,7 @@
 
     {{-- Icon Bootstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/x-icon" href="https://malasid.github.io/favicon.png" />
     
     <title>Aplikasi Sederhana | Auth & CRUD </title>
   </head>
